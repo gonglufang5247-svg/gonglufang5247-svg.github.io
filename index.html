@@ -4,13 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gong Lufang | Generative AI and Humanities</title>
-<!-- 防搜索引擎爬虫标签 -->
 <meta name="robots" content="noindex, nofollow">
 <style>
 :root{
   --sky-1: #fdf2f8; --sky-2: #fbcfe8; --sky-3: #e9d5ff; --sky-4: #c4b5fd;
-  --clouds: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='200' viewBox='0 0 340 200'%3E%3Cg fill='%23ffffff' opacity='0.35'%3E%3Cellipse cx='95' cy='118' rx='72' ry='34'/%3E%3Cellipse cx='150' cy='100' rx='52' ry='40'/%3E%3Cellipse cx='205' cy='120' rx='58' ry='30'/%3E%3C/g%3E%3Cg fill='%23ffffff' opacity='0.2'%3E%3Cellipse cx='40' cy='30' rx='40' ry='16'/%3E%3Cellipse cx='285' cy='45' rx='34' ry='14'/%3E%3C/g%3E%3C/svg%3E");
-  --cloud-size: 340px; --photo: none; 
   --ink: #3b1f4a; --ink-2: #5c3d6b; --ink-3: #8b6b9a;
   --card: rgba(255,255,255,.65); --card-2: rgba(255,255,255,.88); --line: rgba(255,255,255,.9);
   --shadow: 0 12px 34px rgba(80,50,120,.08); --shadow-lg:0 20px 50px rgba(80,50,120,.12);
@@ -20,29 +17,29 @@
 *,*::before,*::after{ box-sizing:border-box; }
 html{ background:#fdf2f8; scroll-behavior:smooth; }
 body{
-  margin:0; color:var(--ink-2); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin:0; color:var(--ink-2); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height:1.8; font-size:16px; -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 .sky{
   position:fixed; inset:0; z-index:-2;
-  background-image: var(--photo), linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 40%, var(--sky-3) 75%, var(--sky-4) 100%);
-  background-size: cover; background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='200' viewBox='0 0 340 200'%3E%3Cg fill='%23ffffff' opacity='0.35'%3E%3Cellipse cx='95' cy='118' rx='72' ry='34'/%3E%3Cellipse cx='150' cy='100' rx='52' ry='40'/%3E%3Cellipse cx='205' cy='120' rx='58' ry='30'/%3E%3C/g%3E%3Cg fill='%23ffffff' opacity='0.2'%3E%3Cellipse cx='40' cy='30' rx='40' ry='16'/%3E%3Cellipse cx='285' cy='45' rx='34' ry='14'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 40%, var(--sky-3) 75%, var(--sky-4) 100%);
+  background-size: 340px auto, cover; background-position: center;
 }
 .sky::after{
   content:""; position:absolute; top:-8%; right:-20%; bottom:-8%; left:-20%;
-  background-image: var(--clouds); background-repeat: repeat; background-size: var(--cloud-size) auto;
-  animation: drift 120s linear infinite; will-change: transform;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='200' viewBox='0 0 340 200'%3E%3Cg fill='%23ffffff' opacity='0.35'%3E%3Cellipse cx='95' cy='118' rx='72' ry='34'/%3E%3Cellipse cx='150' cy='100' rx='52' ry='40'/%3E%3Cellipse cx='205' cy='120' rx='58' ry='30'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat; background-size: 340px auto; animation: drift 120s linear infinite;
 }
-@keyframes drift{ from{ transform: translate3d(0,0,0); } to  { transform: translate3d(calc(var(--cloud-size) * -1),0,0); } }
+@keyframes drift{ from{ transform: translate3d(0,0,0); } to { transform: translate3d(-340px,0,0); } }
 @media (prefers-reduced-motion: reduce){ .sky::after{ animation: none; } }
 .wrap{ width:100%; max-width:1060px; margin:0 auto; padding:0 24px; }
 .hero{ padding: 50px 0 20px; }
 .hero-inner{ display:flex; align-items: center; justify-content: space-between; gap: 40px; }
 .hero-text{ flex: 1; max-width: 750px; }
-.hero h1{ margin:0 0 8px; font-size:clamp(30px,4vw,40px); line-height:1.2; letter-spacing:-.02em; font-weight:800; color:var(--ink); display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-.hero h1 .light{ font-size:16px; font-weight:500; color:var(--ink-3); letter-spacing:0; }
+.hero h1{ margin:0 0 8px; font-size:clamp(30px,4vw,40px); line-height:1.2; font-weight:800; color:var(--ink); display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.hero h1 .light{ font-size:16px; font-weight:500; color:var(--ink-3); }
 .hero .lede{ font-size:15.5px; color:var(--ink-2); margin: 0 0 20px 0; line-height: 1.7; }
-.email-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; white-space: nowrap; background: var(--accent); color: #fff; border: 1px solid transparent; box-shadow: 0 6px 20px rgba(147, 51, 234, 0.3); }
+.email-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; background: var(--accent); color: #fff; border: 1px solid transparent; box-shadow: 0 6px 20px rgba(147, 51, 234, 0.3); transition: all 0.3s ease; }
 .email-btn:hover { background: #7e22ce; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(147, 51, 234, 0.45); color: #fff; }
 .hero-avatar{ flex: none; width: 140px; height: 140px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.95); box-shadow: 0 10px 25px rgba(80,50,120,.15); overflow: hidden; position: relative; background: linear-gradient(135deg, #fbcfe8, #e9d5ff); cursor: pointer; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; }
 .hero-avatar:hover { transform: scale(1.03); }
@@ -57,7 +54,7 @@ body{
 .section{ padding:30px 0; }
 .section-head{ margin-bottom:24px; }
 .kicker{ margin:0 0 6px; font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
-.section-head h2{ margin:0 0 8px; font-size:clamp(22px,3vw,28px); letter-spacing:-.02em; font-weight:750; color:var(--ink); }
+.section-head h2{ margin:0 0 8px; font-size:clamp(22px,3vw,28px); font-weight:750; color:var(--ink); }
 .section-head p{ margin:0; max-width:640px; font-size:14.5px; color:var(--ink-2); }
 .entry-grid{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); align-items: stretch; }
 .entry-card{ position:relative; display:flex; flex-direction:column; padding:24px; border-radius:var(--radius); background:var(--card); border:1px solid var(--line); box-shadow:var(--shadow); cursor:pointer; text-decoration:none; color:inherit; transition: transform .3s, box-shadow .3s, background .3s; }
@@ -124,7 +121,7 @@ body{
 .tl-item::before{ content:""; position:absolute; left:-6px; top:8px; width:10px; height:10px; border-radius:50%; background:#fff; border:2px solid var(--accent); box-shadow:0 0 0 4px rgba(147,51,234,.08); }
 .tl-head{ display:flex; flex-wrap:wrap; gap:2px 16px; align-items:baseline; justify-content:space-between; }
 .tl-head h3{ margin:0; font-size:16px; font-weight:700; color:var(--ink); }
-.tl-time{ font-size:12.5px; color:var(--ink-3); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.tl-time{ font-size:12.5px; color:var(--ink-3); white-space:nowrap; }
 .tl-sub{ margin:2px 0 10px; font-size:13px; color:var(--accent); }
 ul.points{ margin:0; padding-left:16px; font-size:14px; color:var(--ink-2); }
 ul.points li{ margin-bottom:6px; }
@@ -133,7 +130,7 @@ ul.points li:last-child{ margin-bottom:0; }
 .grid{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
 .card{ padding:24px; border-radius:var(--radius); background:var(--card); border:1px solid var(--line); box-shadow:var(--shadow); transition: transform .26s; }
 .card:hover{ transform:translateY(-3px); background:var(--card-2); box-shadow:var(--shadow-lg); }
-.card h3{ margin:0 0 4px; font-size:16px; font-weight:700; line-height:1.5; color:var(--ink); }
+.card h3{ margin:0 0 4px; font-size:16px; font-weight:700; color:var(--ink); }
 .card .role{ margin:0 0 10px; font-size:12.5px; font-weight:500; color:var(--accent); }
 .card p{ margin:0 0 10px; font-size:14px; color:var(--ink-2); }
 .card p:last-child{ margin-bottom:0; }
@@ -142,18 +139,17 @@ ul.points li:last-child{ margin-bottom:0; }
 .card ul li::marker{ color:var(--accent); }
 .tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
 .tags span{ font-size:11.5px; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent); white-space:nowrap; }
-footer{ padding:30px 0 50px; text-align:center; font-size:12.5px; color:var(--ink-3); cursor: default; /* 让鼠标默认不变成手型，更隐蔽 */ }
+footer{ padding:30px 0 50px; text-align:center; font-size:12.5px; color:var(--ink-3); cursor: default; }
 footer .wave{ display:block; width:40px; height:2px; margin:0 auto 12px; border-radius:999px; background:linear-gradient(90deg, var(--accent), var(--accent-warm)); }
 
 /* 编辑工具条：默认隐藏 */
 .edit-bar{ position:fixed; right:18px; bottom:18px; z-index:300; display:none; align-items:center; flex-wrap:wrap; gap:8px; }
-.edit-bar button{ appearance:none; cursor:pointer; padding:10px 18px; border-radius:999px; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink); background:rgba(255,255,255,.95); border:1px solid rgba(147,51,234,.3); box-shadow:0 6px 18px rgba(80,50,120,.15); backdrop-filter:blur(8px); transition:transform .2s; }
+.edit-bar button{ cursor:pointer; padding:10px 18px; border-radius:999px; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink); background:rgba(255,255,255,.95); border:1px solid rgba(147,51,234,.3); box-shadow:0 6px 18px rgba(80,50,120,.15); backdrop-filter:blur(8px); transition:transform .2s; }
 #editToggle { animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4); } 70% { box-shadow: 0 0 0 12px rgba(147, 51, 234, 0); } 100% { box-shadow: 0 0 0 0 rgba(147, 51, 234, 0); } }
 .edit-bar button:hover{ transform:translateY(-2px); background:#fff; animation: none; }
 .edit-bar button.is-on{ background:var(--accent); color:#fff; border-color:transparent; animation: none; }
-#colorPicker { display: none; width: 40px; height: 40px; padding: 0; border: 2px solid #fff; border-radius: 50%; cursor: pointer; box-shadow: 0 6px 18px rgba(80,50,120,.15); background: transparent; transition: transform .2s; }
-#colorPicker:hover { transform: scale(1.1); }
+#colorPicker { display: none; width: 40px; height: 40px; padding: 0; border: 2px solid #fff; border-radius: 50%; cursor: pointer; background: transparent; transition: transform .2s; }
 #colorPicker::-webkit-color-swatch-wrapper { padding: 0; }
 #colorPicker::-webkit-color-swatch { border: none; border-radius: 50%; }
 body.is-editing #colorPicker { display: block; }
@@ -174,12 +170,12 @@ body.is-editing a[data-modal] { cursor:pointer; }
       <div class="hero-text">
         <h1>Gong Lufang <span class="light">Starting anew as a student at the intersection of Generative AI and the Humanities.</span></h1>
         <p class="lede">Over the past eight years, I have been accustomed to finding certainty within complex financial numbers and system architectures. Now, I have chosen to return to campus. In the cross-domain of Generative AI and the Humanities, I hope to step out of my original boundaries, stay curious, and explore the many possibilities where technology and humanities collide.</p>
-        <a href="mailto:26043992g@connect.polyu.hk" class="email-btn" title="Send me an email">✉️ Contact Me: 26043992g@connect.polyu.hk</a>
+        <a href="mailto:26043992g@connect.polyu.hk" class="email-btn">✉️ Contact Me: 26043992g@connect.polyu.hk</a>
       </div>
       <div class="hero-avatar" id="avatar-box" title="Click to upload your photo">
         <input type="file" id="avatar-upload" accept="image/*">
         <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        <img id="user-avatar-img" src="" alt="Gong Lufang's Avatar">
+        <img id="user-avatar-img" src="" alt="Gong Lufang">
       </div>
     </div>
   </div>
@@ -326,7 +322,6 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </section>
 </main>
 
-<!-- 注意这里：给页脚加了一个 ID，用于点击触发 -->
 <footer id="secret-footer">
   <div class="wrap">
     <span class="wave" aria-hidden="true"></span>
@@ -334,7 +329,6 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </div>
 </footer>
 
-<!-- Modal: Courses -->
 <div class="modal-overlay" id="modal-courses">
   <div class="modal-content">
     <button class="modal-close" data-close>&times;</button>
@@ -354,7 +348,6 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </div>
 </div>
 
-<!-- Modal: Following -->
 <div class="modal-overlay" id="modal-following">
   <div class="modal-content">
     <button class="modal-close" data-close>&times;</button>
@@ -385,7 +378,6 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </div>
 </div>
 
-<!-- Modal: Portfolio -->
 <div class="modal-overlay" id="modal-doing">
   <div class="modal-content">
     <button class="modal-close" data-close>&times;</button>
@@ -394,22 +386,16 @@ body.is-editing a[data-modal] { cursor:pointer; }
       <h2>Portfolio · Ongoing</h2>
       <p>Course projects, AI experiments, and written thoughts during my studies.</p>
     </div>
-
     <div class="project-item">
       <h4>AI Writing Tang Poetry</h4>
       <p class="role">Generative AI × Traditional Culture</p>
       <p>Exploring the capabilities of Large Language Models (LLMs) in classical poetry creation. Enter a starting character to generate a Tang poem, and feel free to rate it!</p>
-      
       <div class="poem-tool">
         <div class="poem-controls">
           <input type="text" id="poem-input" class="poem-input" maxlength="1" placeholder="输入第一个字（如：春）">
           <button id="poem-btn" class="poem-btn">生成唐诗</button>
         </div>
-        
-        <div id="poem-display" class="poem-display">
-          输入第一个字，让 AI 为你作诗...
-        </div>
-
+        <div id="poem-display" class="poem-display">输入第一个字，让 AI 为你作诗...</div>
         <div class="rating-section" id="rating-section">
           <span>为这首诗打分：</span>
           <div class="stars" id="stars">
@@ -424,7 +410,6 @@ body.is-editing a[data-modal] { cursor:pointer; }
       </div>
       <div class="tags"><span>LLM</span><span>Poetry</span><span>Interactive</span></div>
     </div>
-
     <div class="project-item">
       <h4>AI Experiment: Prompt Engineering &amp; Creative Writing</h4>
       <p class="role">Personal Experiment · Ongoing</p>
@@ -434,7 +419,6 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </div>
 </div>
 
-<!-- 隐藏的编辑工具条 -->
 <div class="edit-bar" id="secretEditBar" contenteditable="false">
   <input type="color" id="colorPicker" value="#9333ea" title="选中文字后修改颜色">
   <button id="editToggle" type="button">✎ 开启编辑 / Edit</button>
@@ -445,24 +429,22 @@ body.is-editing a[data-modal] { cursor:pointer; }
 (function(){
   'use strict';
 
-  // ==========================================
   // --- 物理开关：点击页脚1次呼出密码框 ---
-  // ==========================================
-  // 你可以修改这里的密码
   const ADMIN_PASSWORD = "000707"; 
-  
   var footer = document.getElementById('secret-footer');
+  
   footer.addEventListener('click', function() {
+    // 防止用户在看网页时误触
     var pwd = prompt("🔒 请输入管理员密码以开启编辑模式：");
     if (pwd === ADMIN_PASSWORD) {
       document.getElementById('secretEditBar').style.display = 'flex';
-      alert("✅ 密码正确！右下角的编辑工具条已显示。\n点击“开启编辑”即可修改文字。");
+      alert("✅ 密码正确！右下角的编辑工具条已显示。");
     } else if (pwd !== null) {
       alert("❌ 密码错误！您没有权限修改此网页。");
     }
   });
 
-  // 头像上传
+  // --- 头像上传 ---
   var avatarBox = document.getElementById('avatar-box');
   var fileInput = document.getElementById('avatar-upload');
   var avatarImg = document.getElementById('user-avatar-img');
@@ -479,7 +461,7 @@ body.is-editing a[data-modal] { cursor:pointer; }
     reader.readAsDataURL(file);
   });
 
-  // 模态框
+  // --- 模态框逻辑 ---
   var overlayMap = {};
   ['modal-courses', 'modal-following', 'modal-doing'].forEach(function(id){ overlayMap[id] = document.getElementById(id); });
   function openModal(id){ var el = overlayMap[id]; if(!el) return; el.classList.add('active'); document.body.style.overflow = 'hidden'; }
@@ -492,7 +474,7 @@ body.is-editing a[data-modal] { cursor:pointer; }
   });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(closeModal); });
 
-  // AI 写唐诗 API 对接
+  // --- AI 唐诗 API ---
   var poemInput = document.getElementById('poem-input');
   var poemBtn = document.getElementById('poem-btn');
   var poemDisplay = document.getElementById('poem-display');
@@ -533,7 +515,7 @@ body.is-editing a[data-modal] { cursor:pointer; }
     }
   });
 
-  // 评分
+  // --- 评分 ---
   stars.forEach(function(star) {
     star.addEventListener('click', function() {
       var val = parseInt(this.getAttribute('data-val'));
@@ -550,7 +532,7 @@ body.is-editing a[data-modal] { cursor:pointer; }
   });
   function resetStars() { stars.forEach(function(s) { s.classList.remove('active'); s.style.color = '#ddd'; }); ratingText.textContent = ''; }
 
-  // 编辑功能
+  // --- 编辑功能 ---
   var editableTargets = Array.prototype.slice.call(document.querySelectorAll('header.hero, main, footer, .modal-content'));
   var editBtn = document.getElementById('editToggle');
   var saveBtn = document.getElementById('saveBtn');
@@ -598,6 +580,5 @@ body.is-editing a[data-modal] { cursor:pointer; }
 
 })();
 </script>
-
 </body>
 </html>

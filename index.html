@@ -142,10 +142,10 @@ ul.points li:last-child{ margin-bottom:0; }
 .card ul li::marker{ color:var(--accent); }
 .tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
 .tags span{ font-size:11.5px; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent); white-space:nowrap; }
-footer{ padding:30px 0 50px; text-align:center; font-size:12.5px; color:var(--ink-3); }
+footer{ padding:30px 0 50px; text-align:center; font-size:12.5px; color:var(--ink-3); cursor: default; /* 让鼠标默认不变成手型，更隐蔽 */ }
 footer .wave{ display:block; width:40px; height:2px; margin:0 auto 12px; border-radius:999px; background:linear-gradient(90deg, var(--accent), var(--accent-warm)); }
 
-/* 编辑工具条：默认隐藏，只有输入密码后才显示 */
+/* 编辑工具条：默认隐藏 */
 .edit-bar{ position:fixed; right:18px; bottom:18px; z-index:300; display:none; align-items:center; flex-wrap:wrap; gap:8px; }
 .edit-bar button{ appearance:none; cursor:pointer; padding:10px 18px; border-radius:999px; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink); background:rgba(255,255,255,.95); border:1px solid rgba(147,51,234,.3); box-shadow:0 6px 18px rgba(80,50,120,.15); backdrop-filter:blur(8px); transition:transform .2s; }
 #editToggle { animation: pulse 2s infinite; }
@@ -326,7 +326,8 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </section>
 </main>
 
-<footer>
+<!-- 注意这里：给页脚加了一个 ID，用于点击触发 -->
+<footer id="secret-footer">
   <div class="wrap">
     <span class="wave" aria-hidden="true"></span>
     © 2026 Gong Lufang · Written slowly under the sky of PolyU
@@ -433,7 +434,7 @@ body.is-editing a[data-modal] { cursor:pointer; }
   </div>
 </div>
 
-<!-- 默认隐藏的编辑工具条 -->
+<!-- 隐藏的编辑工具条 -->
 <div class="edit-bar" id="secretEditBar" contenteditable="false">
   <input type="color" id="colorPicker" value="#9333ea" title="选中文字后修改颜色">
   <button id="editToggle" type="button">✎ 开启编辑 / Edit</button>
@@ -445,23 +446,19 @@ body.is-editing a[data-modal] { cursor:pointer; }
   'use strict';
 
   // ==========================================
-  // --- 管理员权限校验（快捷键 + 密码） ---
+  // --- 物理开关：点击页脚1次呼出密码框 ---
   // ==========================================
   // 你可以修改这里的密码
   const ADMIN_PASSWORD = "000707"; 
-
-  document.addEventListener('keydown', function(e) {
-    // 监听快捷键：Ctrl + Shift + E （Mac 上对应 Cmd + Shift + E）
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'e') {
-      e.preventDefault();
-      
-      var pwd = prompt("🔒 请输入管理员密码以开启编辑模式：");
-      if (pwd === ADMIN_PASSWORD) {
-        document.getElementById('secretEditBar').style.display = 'flex';
-        alert("✅ 密码正确！右下角的编辑工具条已显示。\n点击“开启编辑”即可修改文字。");
-      } else if (pwd !== null) {
-        alert("❌ 密码错误！您没有权限修改此网页。");
-      }
+  
+  var footer = document.getElementById('secret-footer');
+  footer.addEventListener('click', function() {
+    var pwd = prompt("🔒 请输入管理员密码以开启编辑模式：");
+    if (pwd === ADMIN_PASSWORD) {
+      document.getElementById('secretEditBar').style.display = 'flex';
+      alert("✅ 密码正确！右下角的编辑工具条已显示。\n点击“开启编辑”即可修改文字。");
+    } else if (pwd !== null) {
+      alert("❌ 密码错误！您没有权限修改此网页。");
     }
   });
 
